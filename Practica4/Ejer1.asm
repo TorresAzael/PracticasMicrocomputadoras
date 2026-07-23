@@ -8,18 +8,17 @@
 
 		ORG 5
 
-LEERA:
-		MOVF TRISA,0
+LEERA:	MOVF TRISA,0	;Obtencion de Puerto A y condición
 		MOVWF Op
 		BTFSC Op,0
 		GOTO OPCION1	;Todo es 1s
 		GOTO OPCION2	;Todo es 0s
-OPCION1:
-		MOVLW B'00000000'
+
+OPCION1:MOVLW B'00000000'	;Opcion para apagar todos los leds
 		MOVWF TRISB
 		GOTO LEERA
-OPCION2:
-		MOVLW H'FF'
+
+OPCION2:MOVLW H'FF'			;Opcion para encender todos los leds	
 		MOVWF TRISB
 		GOTO LEERA
 
@@ -35,3 +34,5 @@ INICIO: CLRF PORTA 		;Limpia PORTA
 		BCF STATUS,RP0 	;Cambia al banco 0
 		GOTO LEERA
 		END
+
+
